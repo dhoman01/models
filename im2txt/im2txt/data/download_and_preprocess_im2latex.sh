@@ -29,11 +29,7 @@ if [ -z "$1" ]; then
   exit
 fi
 
-if [ "$(uname)" == "Darwin" ]; then
-  UNZIP="tar -xf"
-else
-  UNZIP="unzip -nq"
-fi
+UNZIP="tar -xf"
 
 # Create the output directories.
 OUTPUT_DIR="${1%/}"
@@ -85,13 +81,13 @@ download_and_unzip ${BASE_CAPTIONS_URL} ${CAPTIONS_FILE}
 
 # Download train, val, and test LST
 CAPTIONS_FILE="im2latex_train.lst"
-download_and_unzip ${BASE_CAPTIONS_URL} ${CAPTIONS_FILE}
+download ${BASE_CAPTIONS_URL} ${CAPTIONS_FILE}
 
 CAPTIONS_FILE="im2latex_val.lst"
-download_and_unzip ${BASE_CAPTIONS_URL} ${CAPTIONS_FILE}
+download ${BASE_CAPTIONS_URL} ${CAPTIONS_FILE}
 
 CAPTIONS_FILE="im2latex_test.lst"
-download_and_unzip ${BASE_CAPTIONS_URL} ${CAPTIONS_FILE}
+download ${BASE_CAPTIONS_URL} ${CAPTIONS_FILE}
 
 TRAIN_CAPTIONS_FILE="${SCRATCH_DIR}/im2latex_train.lst"
 VAL_CAPTIONS_FILE="${SCRATCH_DIR}/im2latex_val.lst"
