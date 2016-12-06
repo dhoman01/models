@@ -1,5 +1,5 @@
 # Directory containing preprocessed MSCOCO data.
-DATA_DIR="data_dir/"
+DATA_DIR="${HOME}/im2latex/data_dir/"
 
 # Inception v3 checkpoint file.
 INCEPTION_CHECKPOINT="${HOME}/inception/inception_v3.ckpt"
@@ -11,7 +11,7 @@ MODEL_DIR="${HOME}/im2txt/model"
 bazel build -c opt im2txt/...
 
 # Run the training script.
-nohub bazel-bin/im2txt/train \
+nohup bazel-bin/im2txt/train \
   --input_file_pattern="${DATA_DIR}/train-?????-of-00256" \
   --inception_checkpoint_file="${INCEPTION_CHECKPOINT}" \
   --train_dir="${MODEL_DIR}/train" \

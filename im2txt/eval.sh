@@ -7,7 +7,7 @@ export CUDA_VISIBLE_DEVICES=""
 
 # Run the evaluation script. This will run in a loop, periodically loading the
 # latest model checkpoint file and computing evaluation metrics.
-nohub bazel-bin/im2txt/evaluate \
+nohup bazel-bin/im2txt/evaluate \
   --input_file_pattern="${DATA_DIR}/val-?????-of-00004" \
   --checkpoint_dir="${MODEL_DIR}/train" \
   --eval_dir="${MODEL_DIR}/eval" > eval.log 1>&2 &
