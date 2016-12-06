@@ -26,6 +26,21 @@ sh_binary(
     ],
 )
 
+py_binary(
+    name = "create_tf_records",
+    srcs = [
+        "data/create_tf_records.py",
+    ],
+)
+
+sh_binary(
+    name = "download_and_preprocess_im2latex",
+    srcs = ["data/download_and_preprocess_im2latex.sh"],
+    data = [
+        ":create_tf_records",
+    ],
+)
+
 py_library(
     name = "configuration",
     srcs = ["configuration.py"],

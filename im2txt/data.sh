@@ -5,4 +5,4 @@ DATA_DIR="${HOME}/im2txt/data_dir"
 bazel build im2txt/download_im2latex
 
 # Run the preprocessing script.
-bazel-bin/im2txt/download_im2latex "${MSCOCO_DIR}"
+bazel-bin/im2txt/download_im2latex "${DATA_DIR}"
