@@ -72,26 +72,22 @@ BASE_URL="https://zenodo.org/record/56198/files/"
 
 # Download the images.
 TRAIN_IMAGE_FILE="formula_images.tar.gz"
-download_and_unzip ${BASE_IMAGE_URL} ${TRAIN_IMAGE_FILE}
+download_and_unzip ${BASE_URL} ${TRAIN_IMAGE_FILE}
 
 # Download the formulas.
-CAPTIONS_FILE="im2latex_formulas.lst"
-download_and_unzip ${BASE_CAPTIONS_URL} ${CAPTIONS_FILE}
+FORMULAS_FILE="im2latex_formulas.lst"
+download ${BASE_URL} ${FORMULAS_FILE}
 
 
 # Download train, val, and test LST
-CAPTIONS_FILE="im2latex_train.lst"
-download ${BASE_CAPTIONS_URL} ${CAPTIONS_FILE}
+TRAIN_FILE="im2latex_train.lst"
+download ${BASE_URL} ${TRAIN_FILE}
 
-CAPTIONS_FILE="im2latex_val.lst"
-download ${BASE_CAPTIONS_URL} ${CAPTIONS_FILE}
+VAL_FILE="im2latex_val.lst"
+download ${BASE_URL} ${VAL_FILE}
 
-CAPTIONS_FILE="im2latex_test.lst"
-download ${BASE_CAPTIONS_URL} ${CAPTIONS_FILE}
-
-TRAIN_CAPTIONS_FILE="${SCRATCH_DIR}/im2latex_train.lst"
-VAL_CAPTIONS_FILE="${SCRATCH_DIR}/im2latex_val.lst"
-TEST_CAPTIONS_FILE="${SCRATCH_DIR}/im2latex_test.lst"
+TEST_FILE="im2latex_test.lst"
+download ${BASE_URL} ${TEST_FILE}
 
 # Build TFRecords of the image data.
 cd "${CURRENT_DIR}"
