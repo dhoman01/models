@@ -1,4 +1,4 @@
-DATA_DIR="data_dir"
+DATA_DIR="${HOME}/im2latex/data_dir"
 MODEL_DIR="${HOME}/im2txt/model"
 
 # Ignore GPU devices (only necessary if your GPU is currently memory
@@ -8,6 +8,6 @@ export CUDA_VISIBLE_DEVICES=""
 # Run the evaluation script. This will run in a loop, periodically loading the
 # latest model checkpoint file and computing evaluation metrics.
 nohup bazel-bin/im2txt/evaluate \
-  --input_file_pattern="${DATA_DIR}/val-?????-of-00004" \
+  --input_file_pattern="${DATA_DIR}/val-?????-of-00004.tfrecords" \
   --checkpoint_dir="${MODEL_DIR}/train" \
   --eval_dir="${MODEL_DIR}/eval" > eval.log 1>&2 &
