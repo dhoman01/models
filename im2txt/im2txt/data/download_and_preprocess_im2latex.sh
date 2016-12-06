@@ -33,7 +33,7 @@ UNZIP="tar -xf"
 
 # Create the output directories.
 OUTPUT_DIR="${1%/}"
-SCRATCH_DIR="${OUTPUT_DIR}/raw-data"
+SCRATCH_DIR="${OUTPUT_DIR}"
 mkdir -p "${OUTPUT_DIR}"
 mkdir -p "${SCRATCH_DIR}"
 CURRENT_DIR=$(pwd)
@@ -68,7 +68,7 @@ function download(){
 
 cd ${SCRATCH_DIR}
 
-BASE_URL="https://zenodo.org/record/56198/files/"
+BASE_URL="https://zenodo.org/record/56198/files"
 
 # Download the images.
 TRAIN_IMAGE_FILE="formula_images.tar.gz"
@@ -83,7 +83,7 @@ download ${BASE_URL} ${FORMULAS_FILE}
 TRAIN_FILE="im2latex_train.lst"
 download ${BASE_URL} ${TRAIN_FILE}
 
-VAL_FILE="im2latex_val.lst"
+VAL_FILE="im2latex_validate.lst"
 download ${BASE_URL} ${VAL_FILE}
 
 TEST_FILE="im2latex_test.lst"

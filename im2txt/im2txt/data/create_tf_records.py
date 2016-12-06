@@ -19,17 +19,17 @@ import numpy as np
 import tensorflow as tf
 
 
-tf.flags.DEFINE_string("train_formulas_file", "data_dir/im2latex_train.lst",
+tf.flags.DEFINE_string("train_formulas_file", path.join(path.expanduser('~'), "im2latex/data_dir/im2latex_train.lst"),
                        "Training formulas LST file.")
-tf.flags.DEFINE_string("val_formulas_file", "data_dir/im2latex_val.lst",
+tf.flags.DEFINE_string("val_formulas_file", path.join(path.expanduser('~'), "im2latex/data_dir/im2latex_validate.lst"),
                        "Validation formulas LST file.")
-tf.flags.DEFINE_string("test_formulas_file", "data_dir/im2latex_test.lst",
+tf.flags.DEFINE_string("test_formulas_file", path.join(path.expanduser('~'), "im2latex/data_dir/im2latex_test.lst"),
                        "Test formulas LST file.")
 
-tf.flags.DEFINE_string("formulas_file", "data_dir/im2latex_formulas.lst",
+tf.flags.DEFINE_string("formulas_file", path.join(path.expanduser('~'), "im2latex/data_dir/im2latex_formulas.lst"),
                        "Latex Formula LST file.")
 
-tf.flags.DEFINE_string("output_dir", "data_dir/", "Output data directory.")
+tf.flags.DEFINE_string("output_dir", path.join(path.expanduser('~'), "im2latex/data_dir/"), "Output data directory.")
 
 tf.flags.DEFINE_integer("train_shards", 256,
                         "Number of shards in training TFRecord files.")
