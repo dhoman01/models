@@ -35,9 +35,10 @@ def distort_image(image, thread_id):
     distorted_image: A float32 Tensor of shape [height, width, 3] with values in
       [0, 1].
   """
+  # NOTE: Turning of flip as it has no meaning in im2latex context
   # Randomly flip horizontally.
-  with tf.name_scope("flip_horizontal", values=[image]):
-    image = tf.image.random_flip_left_right(image)
+  # with tf.name_scope("flip_horizontal", values=[image]):
+  #   image = tf.image.random_flip_left_right(image)
 
   # Randomly distort the colors based on thread id.
   color_ordering = thread_id % 2
@@ -113,11 +114,12 @@ def process_image(encoded_image,
                                    method=tf.image.ResizeMethod.BILINEAR)
 
   # Crop to final dimensions.
-  if is_training:
-    image = tf.random_crop(image, [height, width, 3])
-  else:
-    # Central crop, assuming resize_height > height, resize_width > width.
-    image = tf.image.resize_image_with_crop_or_pad(image, height, width)
+  # NOTE: Turning of random crop as all images should contain full formula
+  # if is_training:
+  #   image = tf.random_crop(image, [height, width, 3])
+  # else:
+  # Central crop, assuming resize_height > height, resize_width > width.
+  image = tf.image.resize_image_with_crop_or_pad(image, height, width)
 
   image_summary("resized_image", image)
 
