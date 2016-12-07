@@ -36,7 +36,7 @@ class ModelConfig(object):
     # mixing between shards in training.
     self.values_per_input_shard = 2300
     # Minimum number of shards to keep in the input queue.
-    self.input_queue_capacity_factor = 2
+    self.input_queue_capacity_factor = 1
     # Number of threads for prefetching SequenceExample protos.
     self.num_input_reader_threads = 1
 
@@ -56,7 +56,7 @@ class ModelConfig(object):
     self.num_preprocess_threads = 4
 
     # Batch size.
-    self.batch_size = 32
+    self.batch_size = 16
 
     # File containing an Inception v3 checkpoint to initialize the variables
     # of the Inception model. Must be provided when starting training for the
@@ -87,7 +87,7 @@ class TrainingConfig(object):
     self.num_examples_per_epoch = 586363
 
     # Optimizer for training the model.
-    self.optimizer = "Adam"
+    self.optimizer = "SGD"
 
     # Learning rate for the initial phase of training.
     self.initial_learning_rate = 2.0
@@ -101,4 +101,4 @@ class TrainingConfig(object):
     self.clip_gradients = 5.0
 
     # How many model checkpoints to keep.
-    self.max_checkpoints_to_keep = 5
+    self.max_checkpoints_to_keep = 2
