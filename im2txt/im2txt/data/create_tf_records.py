@@ -12,8 +12,6 @@ import sys
 import threading
 import linecache
 
-from PIL import Image, ImageChops
-
 import nltk.tokenize
 import numpy as np
 import tensorflow as tf
@@ -99,14 +97,6 @@ class ImageDecoder(object):
     def decode_image(self, encoded_image):
         image = self._sess.run(self._decode_image,
             feed_dict={self._encoded_image: encoded_image})
-        image = Image.fromarray(image)
-        bg = Image.new(image.mode, image.size, image.getpixel((0,0)))
-        diff = ImageChops.difference(image,bg)
-        diff = ImageChops.add(diff, diff, 2.01, -100)
-        bbox = diff.getbbox()
-        image = image.crop(bbox)
-
-        image = np.array(image.getdata()).reshape(image.size[1], image.size[0], 3)
 
         assert len(image.shape) == 3
         assert image.shape[2] == 3
