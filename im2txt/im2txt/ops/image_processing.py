@@ -121,11 +121,11 @@ def process_image(encoded_image,
   # Central crop, assuming resize_height > height, resize_width > width.
   image = tf.image.resize_image_with_crop_or_pad(image, height, width)
 
-  image_summary("resized_image", image)
-
-  # Randomly distort the image.
-  if is_training:
-    image = distort_image(image, thread_id)
+  # image_summary("resized_image", image)
+  #
+  # # Randomly distort the image.
+  # if is_training:
+  #   image = distort_image(image, thread_id)
 
   image_summary("final_image", image)
 

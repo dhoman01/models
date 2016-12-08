@@ -72,7 +72,7 @@ class ModelConfig(object):
 
     # LSTM input and output dimensionality, respectively.
     self.embedding_size = 512
-    self.num_lstm_units = 512
+    self.rnn_size = 512
 
     # If < 1.0, the dropout keep probability applied to LSTM variables.
     self.lstm_dropout_keep_prob = 0.7
@@ -91,7 +91,7 @@ class TrainingConfig(object):
 
     # Learning rate for the initial phase of training.
     self.initial_learning_rate = 2.0
-    self.learning_rate_decay_factor = 0.01
+    self.learning_rate_decay_factor = 0.1
     self.num_epochs_per_decay = 8.0
 
     # Learning rate when fine tuning the Inception v3 parameters.
