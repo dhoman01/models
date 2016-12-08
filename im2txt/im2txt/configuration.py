@@ -72,7 +72,7 @@ class ModelConfig(object):
 
     # LSTM input and output dimensionality, respectively.
     self.embedding_size = 512
-    self.rnn_size = 512
+    self.num_lstm_units = 512
 
     # If < 1.0, the dropout keep probability applied to LSTM variables.
     self.lstm_dropout_keep_prob = 0.7
